@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+<title>Promedio Móvil</title>
+{% endblock %}
+
+
+
+{% block content %}
+    
+<div class="container">
+    <legend class="text-center header">Promedio Móvil</legend> <br>
+    <div class="card">
+        <form enctype="multipart/form-data" method="POST" action="{{url_for('calcularPromedioMovil')}}"><br>
+            <div class="col-sm-12">
+                <div class="form-row">
+                    <div class="col-md-6 mb-3"> 
+                        <label for="exampleFormControlFile1">Entrada del archivo (.xlsx)</label>
+                        <input name="file" type="file"  class="form-control" id="exampleFormControlFile" required>
+                        <small id="passwordHelpBlock" class="form-text text-muted">
+                            El archivo Excel debe contener dos columnas, una columna "Período" (ej: 2016, 2017, 2018, ...) y una columna "Promedio" que haga referencia al período en que se encuentra (ej: 5501.0, 6232.7, 8118.3, ...). Puede descargar la plantilla de ejemplo dando click en el botón "Descargar Plantilla".
+                        </small>
+                    </div>
+                </div>
+                <button class="btn btn-outline-danger" type="submit">Subir</button>
+            </div>
+        </form><br>
+    </div>
+</div>
+
+{% endblock %}
+    

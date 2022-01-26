@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block title %}
+<title>Método congruencial multiplicativo</title>
+{% endblock %}
+
+{% block content %}
+<legend class="text-center header">Método congruencial multiplicativo</legend><br>
+<div class="container">
+    <legend class="text-left header">Formulario</legend>
+    <div class="card">
+        <form method="POST" action="{{url_for('calcularCongruencialMultiplicativo')}}"><br>
+            <div class="container">
+                <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                        <label for="validationDefault01">Número iteraciones</label>
+                        <input name="numeroIteraciones" type="number" class="form-control" id="validationDefault01"
+                            required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="validationDefault02">Semilla</label>
+                        <input name="semilla" type="number" class="form-control" id="validationDefault02" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="validationDefault01">Multiplicador</label>
+                        <input name="multiplicador" type="number" class="form-control" id="validationDefault01"
+                            required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="validationDefault01">Módulo</label>
+                        <input name="modulo" type="number" class="form-control" id="validationDefault01" required>
+                    </div>
+                </div>
+                <button class="btn btn-outline-danger" type="submit">Calcular</button>
+            </div>
+        </form><br>
+    </div>
+</div><br>
+
+<div class="container">
+    <legend class="text-left header">Gráfica</legend>
+    <div class="card">
+        <center><img src="data:image/png;base64,{{ image }}"></center>
+    </div>
+</div><br>
+
+<div class="container">
+    <legend class="text-left header">Tabla de resultados</legend>
+</div><br>
+
+<div class="container">
+    {{data|safe}}
+</div>
+{% endblock %}

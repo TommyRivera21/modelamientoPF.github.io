@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block title %}
+<title>Promedio móvil</title>
+{% endblock %}
+
+{% block content %}
+<legend class="text-center header">Promedio móvil</legend><br>
+<div class="container">
+    <div class="card">
+        <form enctype="multipart/form-data" method="POST" action="{{url_for('calcularPromedioMovil')}}"><br>
+            <div class="col-sm-12">
+                <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                        <label for="exampleFormControlFile1">Entrada del archivo (.xlsx)</label>
+                        <input name="file" type="file" class="form-control" id="exampleFormControlFile1"
+                            required>
+                        <small id="passwordHelpBlock" class="form-text text-muted">
+                            El archivo Excel debe de contener dos columnas, una columna "Período" (ej: 2016, 2017, 2018,
+                            ...) y una columna "Promedio" que haga referencia al período en que se encuentra (ej:
+                            5501.0, 6232.7, 8118.3, ...). Puede descargar la plantilla de ejemplo dando clic en el botón
+                            "Descargar plantilla".
+                        </small>
+                    </div>
+                </div>
+                <button class="btn btn-outline-danger" type="submit">Subir</button>
+                <!--  <a class="btn btn-success float-right" href="{{url_for('static', filename='file/template.xlsx')}}"
+                    role="button">Descargar plantilla</a> -->
+            </div>
+        </form><br>
+    </div>
+</div><br>
+
+<div class="container">
+    <legend class="text-left header">Gráfica</legend>
+    <div class="card">
+        <center><img src="data:image/png;base64,{{ image }}"></center>
+    </div>
+</div><br>
+
+ <div class="container">
+    <legend class="text-left header">Tabla de resultados</legend>
+   <!--  <a class="btn btn-success" href="{{url_for('static', filename='file/data.xlsx')}}" role="button">Exportar a Excel</a>
+    <a class="btn btn-warning" href="{{url_for('static', filename='file/data.csv')}}" role="button">Exportar a csv</a> -->
+</div><br> 
+
+<div class="container">
+    {{data|safe}}
+</div>
+{% endblock %}

@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+
+{% block title %}
+<title>Línea de espera</title>
+{% endblock %}
+
+{% block content %}
+<legend class="text-center header">Línea de espera</legend><br>
+<div class="container">
+    <div class="card">
+        <form method="POST" action="{{url_for('calcularLineaEspera')}}"><br>
+            <div class="container">
+                <div class="form-row">     
+                    <div class="col-md-6 mb-3">
+                        <label for="validationDefault01">Lambda (λ)</label>
+                        <input name="landa" type="number" step="any" class="form-control" id="validationDefault01"
+                            required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="validationDefault02">Miu (µ)</label>
+                        <input name="miu" type="number" step="any" class="form-control" id="validationDefault02"
+                            required>
+                    </div>
+                    <legend class="text-center header">Método congruencial lineal</legend><br>
+                    <div class="col-md-6 mb-3">
+                        <label for="validationDefault01">Número iteraciones (n)</label>
+                        <input name="numeroIteraciones" type="number" class="form-control" id="validationDefault01"
+                            required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="validationDefault02">Semilla (X0)</label>
+                        <input name="semilla" type="number" class="form-control" id="validationDefault02" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="validationDefault01">Multiplicador (a)</label>
+                        <input name="multiplicador" type="number" class="form-control" id="validationDefault01"
+                            required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="validationDefault02">Incremento (c)</label>
+                        <input name="incremento" type="number" class="form-control" id="validationDefault02" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="validationDefault01">Módulo (m)</label>
+                        <input name="modulo" type="number" class="form-control" id="validationDefault01" required>
+                    </div>
+                </div>
+                <button class="btn btn-outline-danger" type="submit">Calcular</button>
+            </div>
+        </form><br>
+    </div>
+</div><br>
+
+<div class="container">
+    <legend class="text-left header">Gráfica</legend>
+    <div class="card">
+        <center><img src="data:image/png;base64,{{ image }}"></center>
+    </div>
+</div><br>
+
+<div class="container">
+    <legend class="text-left header">Tabla de resultados</legend>
+    {{data|safe}}
+</div>
+
+<div class="container">
+    <legend class="text-left header">Tabla de resultados</legend>
+   <!--  <a class="btn btn-success" href="{{url_for('static', filename='file/data.xlsx')}}" role="button">Exportar a
+        Excel</a>
+    <a class="btn btn-warning" href="{{url_for('static', filename='file/data.csv')}}" role="button">Exportar a csv</a> -->
+</div><br>
+
+<div class="container">
+    {{data2|safe}}
+</div>
+
+<div class="container">
+    <legend class="text-left header">Tabla de resultados</legend>
+    {{data3|safe}}
+</div>
+{% endblock %}

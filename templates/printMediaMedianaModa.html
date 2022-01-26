@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block title %}
+<title>Media, Mediana y Moda</title>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <legend class="text-left header">Media, Mediana y Moda</legend> <br>
+    <legend class="text-left header">Media, Mediana y Moda</legend>
+    <div class="card">
+        <form enctype="multipart/form-data" method="POST" action="{{url_for('calcularMediaModaMediana')}}"><br>
+            <div class="col-sm-12">
+                <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                        <label for="exampleFormControlFile1">Subir archivo para calcular (.xlsx)</label>
+                        <input name="file" type="file" class="form-control-file form-data" id="exampleFormControlFile1"
+                            required>
+                        <small id="passwordHelpBlock" class="form-text text-muted">
+                        </small>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                        <label for="validationDefault01">Nombre del Campo a Analizar</label>
+                        <input name="nombreColumna" type="text" class="form-control" id="validationDefault01" required>
+                    </div>
+
+                </div>
+                <button class="btn btn-danger" type="submit">Calcular</button>
+            </div>
+        </form><br>
+    </div>
+</div><br>
+
+<div class="container">
+    <legend class="text-left header">Gráfica</legend>
+    <div class="card">
+        <center><img src="data:image/png;base64,{{ image }}"></center>
+    </div>
+</div><br>
+
+<div class="container">
+    <legend class="text-left header">Tabla de resultados</legend>
+
+</div><br>
+
+<div class="container">
+    {{data|safe}}
+</div>
+
+<div class="container">
+    {{data2|safe}}
+</div>
+{% endblock %}

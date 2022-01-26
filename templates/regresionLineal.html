@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+<title>Regresión lineal</title>
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <legend class="text-center header">Regresión lineal</legend><br>
+    <div class="card">
+        <form enctype="multipart/form-data" method="POST" action="{{url_for('calcularRegresionLineal')}}"><br>
+            <div class="col-sm-12">
+                <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                        <label for="exampleFormControlFile1">Entrada del archivo (.xlsx)</label>
+                       <!--  <a class="btn btn-warning float-right"
+                            href="{{url_for('static', filename='file/template2.xlsx')}}" role="button">Descargar
+                            plantilla</a> -->
+                        <input name="file" type="file"  class="form-control" id="exampleFormControlFile1"
+                            required>
+                        <small id="passwordHelpBlock" class="form-text text-muted">
+                            El archivo Excel debe de contener dos columnas, una columna "Cantidad" (ej: 100, 200, 300,
+                            ...) y una columna "Produccion" que haga referencia al período en que se encuentra (ej: 40,
+                            50, 50 ...). Puede descargar la plantilla de ejemplo dando clic en el botón "Descargar
+                            plantilla".
+                        </small>
+                    </div>
+                </div>
+                <button class="btn btn-outline-danger" type="submit">Calcular</button>
+            </div>
+        </form><br>
+    </div>
+</div><br>
+{% endblock %}

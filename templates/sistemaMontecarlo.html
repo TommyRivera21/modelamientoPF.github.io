@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block title %}
+<title>Montecarlo</title>
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <br>
+    <legend class="text-center header">Montecarlo</legend><br>
+    <div class="card">
+        <form enctype="multipart/form-data" method="POST" action="{{url_for('calcularMontecarlo')}}"><br>
+            <div class="col-sm-12">
+                <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                        <label for="exampleFormControlFile1">Entrada del archivo (.xlsx)</label>
+                        <!-- <a class="btn btn-warning float-right"
+                            href="{{url_for('static', filename='file/template4.xlsx')}}" role="button">Descargar
+                            plantilla</a> -->
+                        <input name="file" type="file"  class="form-control" id="exampleFormControlFile1"
+                            required>
+                        <small id="passwordHelpBlock" class="form-text text-muted">
+                            El archivo Excel debe de contener dos columnas, una columna "X" (ej: 7.0, 4.0, 1.0, ...) y
+                            una columna "Y" que haga referencia al período en que se encuentra (ej: 29.000000,
+                            29.375000, 43.666667, ...). Puede descargar la plantilla de ejemplo dando clic en el botón
+                            "Descargar plantilla".
+                        </small>
+                    </div>
+                </div>
+                <div class="form-row">
+
+                    <legend class="text-center header">Método congruencial lineal</legend><br>
+                    <div class="col-md-6 mb-3">
+                        <label for="validationDefault01">Número iteraciones (n)</label>
+                        <input name="numeroIteraciones" type="number" class="form-control" id="validationDefault01"
+                            required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="validationDefault02">Semilla (X0)</label>
+                        <input name="semilla" type="number" class="form-control" id="validationDefault02" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="validationDefault01">Multiplicador (a)</label>
+                        <input name="multiplicador" type="number" class="form-control" id="validationDefault01"
+                            required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="validationDefault02">Incremento (c)</label>
+                        <input name="incremento" type="number" class="form-control" id="validationDefault02" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="validationDefault01">Módulo (m)</label>
+                        <input name="modulo" type="number" class="form-control" id="validationDefault01" required>
+                    </div>
+                </div>
+                <button class="btn btn-outline-danger" type="submit">Calcular</button>
+            </div>
+        </form><br>
+    </div>
+</div><br>
+{% endblock %}
